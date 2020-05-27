@@ -5,30 +5,51 @@
   </head>
   <body>
     <a-scene>
+      <a-assets>
+      </a-assets>
       <!--adding cursor to camera-->
-      <a-camera>
-        <a-cursor></a-cursor>
-      </a-camera>
+      <a-entity id="camera" camera look-controls wasd-controls="acceleration:100" position="0 1.6 0" cursor="rayOrigin: mouse"></a-entity>
 
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-box position="0 0.5 -3" rotation="0 0 0" color="#A9A9A9" shadow
+             event-set__enter="_event: mouseenter; color: #026fc9; _target: #cylinderText; visible: true"
+             event-set__leave="_event: mouseleave; color: #A9A9A9; _target: #cylinderText; visible: false"
+             animation="property: rotation;
+               dur:3000;
+               to:0 360 0;
+               easing: linear;
+               enabled: true;
+               startEvents: click;">
 
-      <!--adding cursor hover interaction-->
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"
-                  event-set__enter="_event: mouseenter; _target: #cylinderText; visible: true"
-                  event-set__leave="_event: mouseleave; _target: #cylinderText; visible: false">
-        <a-text id="cylinderText" value="This is a cylinder" align="center" color="#FFF" visible="false" position="0 -0.55 0.55"
-                geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>
-      </a-cylinder>
+               <a-text id="cylinderText" value="Click!" align="center" color="#FFF" visible="false" position="0 0 0.55"
+                geometry="primitive: plane; width: 1.75; height: 0.75;" material="color: #333"></a-text>
 
-      <!--click example-->
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"
-                  event-set__down="_event: mousedown; material.wireframe: true"
-                  event-set__up="_event: mouseup; material.wireframe: false"
-                  event-set__leave="_event: mouseleave; material.wireframe: false"></a-plane>
+      </a-box>
 
+      <a-sphere position="-2 1.25 -5" radius="1.25" color="#EF2D5E" shadow
+                event-set__enter="_event: mouseenter; color: #026fc9"
+                event-set__leave="_event: mouseleave; color: #EF2D5E"
+                animation="property: position;
+                  to: -2 2.5 -6;
+                  dur: 1000;
+                  easing: linear;
+                  enabled: true;
+                  startEvents: click;">
+      </a-sphere>
 
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sphere position="2 1.25 -5" radius="1.25" color="#EF2D5E" shadow
+                event-set__enter="_event: mouseenter; color: #026fc9"
+                event-set__leave="_event: mouseleave; color: #EF2D5E"
+                animation="property: position;
+                  to: 2 2.5 -6;
+                  dur: 1000;
+                  easing: linear;
+                  enabled: true;
+                  startEvents: click;">
+      </a-sphere>
+
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="40" height="40" color="#867D8C" shadow></a-plane>
+      <a-sky color="#87CEEB"></a-sky>
+
       <a-entity camera look-controls wasd-controls="acceleration:100" position="0 1.6 0"></a-entity>
     </a-scene>
   </body>
