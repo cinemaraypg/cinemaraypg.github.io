@@ -2,13 +2,34 @@
   <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script>
+    AFRAME.registerComponent('raycaster-listen', {
+      	init: function () {
+          // Use events to figure out what raycaster is listening so we don't have to
+          // hardcode the raycaster.
+          this.el.addEventListener('raycaster-intersected', evt => {
+            this.raycaster = evt.detail.el;
+          });
+          this.el.addEventListener('raycaster-intersected-cleared', evt => {
+            this.raycaster = null;
+          });
+          this.el.addEventListener('click', () => {
+            if (!this.raycaster) { return; }  // Not intersecting.
+
+            let intersection = this.raycaster.components.raycaster.getIntersection(this.el);
+            if (!intersection) { return; }
+            document.querySelector("#camera").object3D.position.set(intersection.point.x, 1.6, intersection.point.z);
+          })
+        }
+      });
+    </script>
   </head>
   <body>
     <a-scene>
       <a-assets>
       </a-assets>
       <!--adding cursor to camera-->
-      <a-entity id="camera" camera look-controls wasd-controls="acceleration:100" position="0 1.6 0" cursor="rayOrigin: mouse"></a-entity>
+      <a-entity id="camera" camera look-controls wasd-controls="acceleration:100" position="0 1.6 0" cursor="rayOrigin: mouse" raycaster></a-entity>
 
       <a-box position="0 0.5 -3" rotation="0 0 0" color="#A9A9A9" shadow
              event-set__enter="_event: mouseenter; color: #026fc9; _target: #cylinderText; visible: true"
@@ -47,10 +68,9 @@
                   startEvents: click;">
       </a-sphere>
 
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="40" height="40" color="#867D8C" shadow></a-plane>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="40" height="40" color="#867D8C" shadow raycaster-listen></a-plane>
       <a-sky color="#87CEEB"></a-sky>
 
-      <a-entity camera look-controls wasd-controls="acceleration:100" position="0 1.6 0"></a-entity>
     </a-scene>
   </body>
 </html>
