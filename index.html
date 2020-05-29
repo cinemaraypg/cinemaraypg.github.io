@@ -9,6 +9,8 @@
       <a-assets>
         <a-asset-item id="room-obj" src="obj/apartment/apartment-living-room.obj"></a-asset-item>
         <a-asset-item id="room-mtl" src="obj/apartment/apartment-living-room.mtl"></a-asset-item>
+
+        <video muted id="cinemaray_video_sample" autoplay loop="true" src="movie-sample/03_Photographic_Equipment.mp4" webkit-playsinline></video>
       </a-assets>
       <!--adding cursor to camera-->
       <a-entity id="camera" camera look-controls wasd-controls="acceleration:100"
@@ -34,6 +36,7 @@
       <a-sky color="#87CEEB"></a-sky>
 
       <a-obj-model src="#room-obj" mtl="#room-mtl" rotation="0 90 0"></a-obj-model>
+      <a-video src="#cinemaray_video_sample" width="3" height="2" position="-3.75 1.7 0" rotation="0 90 0" ></a-video>
 
       <!--
       <a-box position="0 0.5 -3" rotation="0 0 0" color="#A9A9A9" shadow
@@ -76,4 +79,10 @@
 
     </a-scene>
   </body>
+
+  <script>
+  //play video
+    document.querySelector(document.querySelector('a-video').getAttribute('src')).play();
+  </script>
+
 </html>
