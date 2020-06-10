@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="components/raycaster-move.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="room-obj" src="obj/apartment/apartment-living-room.obj"></a-asset-item>
+        <a-asset-item id="room-mtl" src="obj/apartment/apartment-living-room.mtl"></a-asset-item>
+
+        <video muted id="cinemaray_video_sample" autoplay loop="true" src="movie-sample/03_Photographic_Equipment.mp4" webkit-playsinline></video>
+      </a-assets>
+      <!--adding cursor to camera-->
+      <a-entity id="camera" camera look-controls wasd-controls="acceleration:100"
+      position="0 1.6 0"
+      cursor = "rayOrigin: mouse"
+      raycaster = "objects: .raycastable"
+      animation__move = "property: position; to: 0 0 0;
+        startEvents: move;
+        dur: 1000;
+        easings: easeInQuad">
+      </a-entity>
+
+      <a-plane class="raycastable"
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="7.5" height="7,5"
+        color="#867D8C"
+        shadow
+        raycaster-listen
+        material="opacity: 0.0; transparent: true">
+      </a-plane>
+
+      <a-sky color="#87CEEB"></a-sky>
+
+      <a-obj-model src="#room-obj" mtl="#room-mtl" rotation="0 90 0"></a-obj-model>
+      <a-video src="#cinemaray_video_sample" width="3" height="2" position="-3.75 1.7 0" rotation="0 90 0" ></a-video>
+
+      <!--
+      <a-box position="0 0.5 -3" rotation="0 0 0" color="#A9A9A9" shadow
+             event-set__enter="_event: mouseenter; color: #026fc9; _target: #cylinderText; visible: true"
+             event-set__leave="_event: mouseleave; color: #A9A9A9; _target: #cylinderText; visible: false"
+             animation="property: rotation;
+               dur:3000;
+               to:0 360 0;
+               easing: linear;
+               enabled: true;
+               startEvents: click;">
+
+               <a-text id="cylinderText" value="Click!" align="center" color="#FFF" visible="false" position="0 0 0.55"
+                geometry="primitive: plane; width: 1.75; height: 0.75;" material="color: #333"></a-text>
+
+      </a-box>
+
+      <a-sphere position="-2 1.25 -5" radius="1.25" color="#EF2D5E" shadow
+                event-set__enter="_event: mouseenter; color: #026fc9"
+                event-set__leave="_event: mouseleave; color: #EF2D5E"
+                animation="property: position;
+                  to: -2 2.5 -6;
+                  dur: 1000;
+                  easing: linear;
+                  enabled: true;
+                  startEvents: click;">
+      </a-sphere>
+
+      <a-sphere position="2 1.25 -5" radius="1.25" color="#EF2D5E" shadow
+                event-set__enter="_event: mouseenter; color: #026fc9"
+                event-set__leave="_event: mouseleave; color: #EF2D5E"
+                animation="property: position;
+                  to: 2 2.5 -6;
+                  dur: 1000;
+                  easing: linear;
+                  enabled: true;
+                  startEvents: click;">
+      </a-sphere>
+    -->
+
+    </a-scene>
+  </body>
+
+  <script>
+  //play video
+    document.querySelector(document.querySelector('a-video').getAttribute('src')).play();
+  </script>
+
+</html>
