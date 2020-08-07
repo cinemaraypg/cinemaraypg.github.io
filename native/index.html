@@ -44,15 +44,39 @@
             var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 10, 0), scene);
             var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 10, -1), scene);
 
-            // This creates and positions a universal camera (non-mesh)
-        	  var camera = new BABYLON.UniversalCamera("camera", new BABYLON.Vector3(0, 1, 0), scene);
-            // This attaches the camera to the canvas
+            // // This creates and positions a universal camera (non-mesh)
+        	  // var camera = new BABYLON.UniversalCamera("camera", new BABYLON.Vector3(0, 1, 0), scene);
+            // // This attaches the camera to the canvas
+            //
+            // //camera.setTarget(BABYLON.Vector3.Zero());
+            // camera.attachControl(canvas, true);
+
+            // var camera = new BABYLON.UniversalCamera("camera1", new BABYLON.Vector3(0, 1, 0), scene);
+            //
+            // // This attaches the camera to the canvas
+            // camera.attachControl(canvas, false);
+            // camera.keysUp.push(87);
+            // camera.keysDown.push(83);
+            // camera.keysRight.push(68);
+            // camera.keysLeft.push(65);
+
+
+            var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 1, 0), scene);
+            camera.keysUp = [87]; // W
+            camera.keysDown = [83]; // S
+            camera.keysLeft = [65]; // A
+            camera.keysRight = [68]; // D
+            camera.speed = 0.1;
             camera.attachControl(canvas, true);
+            camera._needMoveForGravity = true;
 
             var ground = BABYLON.Mesh.CreateGround("ground1", 10, 10, 0, scene);
             var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);
             myMaterial.alpha = 0;
             ground.material = myMaterial;
+
+            BABYLON.SceneLoader.Append("assets/apartment/", "apartment-living-room.obj", scene, function (scene) {
+            });
 
             var vidMat = new BABYLON.StandardMaterial("vidTex", scene);
             var videoTexture = new BABYLON.VideoTexture("video", "assets/vid/video.mp4", scene, false);
@@ -67,9 +91,6 @@
             scene.onPointerDown = function () {
               videoTexture.video.play();
             }
-            
-            BABYLON.SceneLoader.Append("assets/apartment/", "apartment-living-room.obj", scene, function (scene) {
-            });
 
             return scene;
         };
