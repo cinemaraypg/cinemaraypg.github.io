@@ -10,36 +10,6 @@
 </head>
 <body>
   <h1>Astronaut</h1>
-    <model-viewer id="model-viewer" src="assets/Astronaut.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="assets/Astronaut.usdz">
-    <div id="error" class="hide">AR is not supported on this device</div>
-  </model-viewer>
-  <script>
-    document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
-      if(event.detail.status === 'failed'){
-        const error = document.querySelector("#error");
-        error.classList.remove('hide');
-        error.addEventListener('transitionend',(event) => {
-          error.classList.add('hide');
-        });
-      }
-    });
-  </script>
-  <style>
-    #error {
-      background-color: #ffffffdd;
-      border-radius: 16px;
-      padding: 16px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate3d(-50%, -50%, 0);
-      transition: opacity 0.3s;
-    }
-    #error.hide {
-      opacity: 0;
-      visibility: hidden;
-      transition: visibility 2s, opacity 1s 1s;
-    }
-  </style>
+  <model-viewer src="assets/Astronaut.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="assets/Astronaut.usdz"></model-viewer>
 </body>
 </html>
