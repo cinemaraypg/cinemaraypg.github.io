@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3229539477
+CRC: 3245440503
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8ae2dd4415052e6324ac2e7f76091cf1
+    Hash: e35418ecb29a893b58390f9d866df3c8
   TypeTreeHash:
     serializedVersion: 2
     Hash: 58f4643aacdf87fd076183ab4a99eadc
@@ -28,6 +28,5 @@ ClassTypes:
 Assets:
 - Assets/BundledAssets/tesbundle/Test_Image.asset
 - Assets/BundledAssets/tesbundle/BundledObj.prefab
-- Assets/BundledAssets/tesbundle/unnamed.jpg
 - Assets/BundledAssets/tesbundle/AssetBundle_Text.asset
 Dependencies: []
