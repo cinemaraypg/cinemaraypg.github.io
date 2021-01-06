@@ -1,22 +1,16 @@
 ManifestFileVersion: 0
-CRC: 3245440503
+CRC: 2396012664
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e35418ecb29a893b58390f9d866df3c8
+    Hash: 3a0996580aa8f0662b96b32d79ef785a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 58f4643aacdf87fd076183ab4a99eadc
+    Hash: 6dd37b579504ae77d42abe5cd35707a7
 HashAppended: 0
 ClassTypes:
-- Class: 1
-  Script: {instanceID: 0}
-- Class: 4
-  Script: {instanceID: 0}
 - Class: 28
   Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: ee9ad8b13c3409140ae848d27a3ed932, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 53f53cc7136c9554ba391e1eb1fa25c0, type: 3}
 - Class: 114
@@ -27,6 +21,5 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/BundledAssets/tesbundle/Test_Image.asset
-- Assets/BundledAssets/tesbundle/BundledObj.prefab
 - Assets/BundledAssets/tesbundle/AssetBundle_Text.asset
 Dependencies: []
